@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ffc43a7-598b-465e-be8a-4732909eaf1c" name="Default" comment="comparing and searching HashMaps">
-      <change afterPath="$PROJECT_DIR$/src/Thread/Thread_04/Main.java" afterDir="false" />
+    <list default="true" id="1ffc43a7-598b-465e-be8a-4732909eaf1c" name="Default" comment="new thread">
+      <change afterPath="$PROJECT_DIR$/src/HandlingFiles/BackUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +233,7 @@
       <recent name="Collections.Queues_PriorityQueue" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Thread.Thread_04.Main">
+  <component name="RunManager" selected="Application.BackUp">
     <configuration default="true" type="Babashka" factoryName="BabashkaLocalRepl" activateToolWindowBeforeRun="false">
       <setting name="displayName" value="" />
       <setting name="bbPath" value="" />
@@ -270,12 +270,12 @@
       <setting name="focusEditor" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="CreateMultiPagePdfFromByteArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PDF_Generator.CreateMultiPagePdfFromByteArray" />
+    <configuration name="BackUp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HandlingFiles.BackUp" />
       <module name="JavaKurs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="PDF_Generator.*" />
+          <option name="PATTERN" value="HandlingFiles.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -360,19 +360,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.BackUp" />
       <item itemvalue="Application.Thread.Thread_04.Main" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.HashMap_Search" />
       <item itemvalue="Application.LoopsStreams" />
-      <item itemvalue="Application.CreateMultiPagePdfFromByteArray" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BackUp" />
         <item itemvalue="Application.Thread.Thread_04.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HashMap_Search" />
         <item itemvalue="Application.LoopsStreams" />
-        <item itemvalue="Application.CreateMultiPagePdfFromByteArray" />
       </list>
     </recent_temporary>
   </component>
@@ -448,7 +448,8 @@
       <workItem from="1704378114645" duration="108000" />
       <workItem from="1704387266871" duration="971000" />
       <workItem from="1708190749291" duration="664000" />
-      <workItem from="1708782572475" duration="1269000" />
+      <workItem from="1708782572475" duration="1598000" />
+      <workItem from="1708784256142" duration="298000" />
     </task>
     <task id="LOCAL-00001" summary="LinkedHashMap counter">
       <created>1599668752873</created>
@@ -611,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703773578849</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="new thread">
+      <created>1708783988209</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1708783988209</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -728,7 +736,8 @@
     <MESSAGE value="csv controller" />
     <MESSAGE value="IntStream" />
     <MESSAGE value="comparing and searching HashMaps" />
-    <option name="LAST_COMMIT_MESSAGE" value="comparing and searching HashMaps" />
+    <MESSAGE value="new thread" />
+    <option name="LAST_COMMIT_MESSAGE" value="new thread" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
