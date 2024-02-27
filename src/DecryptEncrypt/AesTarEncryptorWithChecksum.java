@@ -62,7 +62,7 @@ public class AesTarEncryptorWithChecksum {
 
         // Erstelle eine Prüfsumme für die verschlüsselte Datei
         String checksum = createChecksum(outputFilePath);
-        System.out.println("Checksum for the encrypted file: " + checksum);
+        System.out.println("Checksum for the encrypted file is: " + checksum);
 
         // Lösche die temporäre TAR-Datei
         Files.deleteIfExists(Paths.get(tarFileName));
