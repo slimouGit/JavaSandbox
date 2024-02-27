@@ -11,6 +11,27 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+/**
+ * A class for encrypting a folder using AES encryption.
+ * This class uses the AES encryption algorithm to encrypt a folder and its contents.
+ * The encryption is done using a password provided by the user.
+ * The encrypted files are saved in the output folder specified by the user.
+ *
+ * <p>
+ * This class uses the Java Cryptography Extension (JCE) for the encryption.
+ * The password is hashed using SHA-1 and the first 128 bits are used as the key for the AES encryption.
+ * </p>
+ *
+ * <p>
+ * This class can be used as follows:
+ * <pre>
+ *     AesFolderEncryptor encryptor = new AesFolderEncryptor("your_secure_password");
+ *     encryptor.encryptFolder("path_to_input_folder", "path_to_output_folder");
+ * </pre>
+ * </p>
+ *
+ * @author slimouGit
+ */
 public class AesFolderEncryptor {
     private static final String ALGORITHM = "AES";
     private static final String TRANSFORMATION = "AES";
@@ -29,7 +50,8 @@ public class AesFolderEncryptor {
         File inputFile = new File(inputFolderPath);
         File outputFile = new File(outputFolderPath);
 
-        // Überprüfe, ob inputFile ein Verzeichnis ist
+        // Überprüfe, ob
+        // inputFile ein Verzeichnis ist
         if (inputFile.isDirectory()) {
             // Stelle sicher, dass das Ausgabeverzeichnis existiert
             if (!outputFile.exists()) {
