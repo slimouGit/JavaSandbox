@@ -49,6 +49,35 @@ public class RandomKeyEncryption {
     }
 
     /**
+     * Creates a hash of a given string using the SHA-256 algorithm.
+     *
+     * @param input the string to hash
+     * @return the hash of the input string
+     * @throws NoSuchAlgorithmException if the SHA-256 algorithm is not available
+     */
+    public String createHash(String input) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(input.getBytes());
+        return bytesToHex(hash);
+    }
+
+    /**
+     * Converts a byte array to a hexadecimal string.
+     *
+     * @param bytes the byte array to convert
+     * @return the hexadecimal string
+     */
+    private String bytesToHex(byte[] bytes) {
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : bytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
+    /**
      * The main method that generates a random key, encrypts it using a public key, and writes the encrypted key to a file.
      *
      * @param args command-line arguments (not used)
@@ -66,6 +95,10 @@ public class RandomKeyEncryption {
 
             // Encrypt the random key with the public key
             String encryptedKey = randomKeyEncryption.encryptRandomKeyWithPublicKey(randomKey, keyPair.getPublic());
+
+            // Create a hash of the encrypted key
+            String hash = randomKeyEncryption.createHash(encryptedKey);
+            System.out.println("Hash of the encrypted key: " + hash);
 
             // Write the encrypted key to the file "meta.xml"
             try (FileWriter fileWriter = new FileWriter("meta.xml")) {
