@@ -37,6 +37,10 @@ import java.util.Arrays;
  *
  * @author slimouGit
  */
+
+/**
+ * https://www.baeldung.com/java-aes-encryption-decryption
+ */
 public class AesTarEncryptorWithChecksum {
     private static final String ALGORITHM = "AES";
     private static final String TRANSFORMATION = "AES";
@@ -106,7 +110,7 @@ public class AesTarEncryptorWithChecksum {
             AesTarEncryptorWithChecksum encryptor = new AesTarEncryptorWithChecksum(password);
 
             String inputFolderPath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Input/Test2";
-            String outputFilePath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test2.tar.enc";
+            String outputFilePath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test2.tar.gz.aes";
 
             encryptor.encryptAndCompressFolder(inputFolderPath, outputFilePath);
             System.out.println("Folder encrypted and compressed successfully!");
