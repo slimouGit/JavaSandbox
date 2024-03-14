@@ -14,27 +14,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-/**
- * A class for encrypting and compressing a folder using AES encryption and TAR compression.
- * This class uses the AES encryption algorithm to encrypt a folder and its contents.
- * The encryption is done using a password provided by the user.
- * The encrypted files are compressed into a TAR file and saved in the output file specified by the user.
- *
- * <p>
- * This class uses the Java Cryptography Extension (JCE) for the encryption.
- * The password is hashed using SHA-1 and the first 128 bits are used as the key for the AES encryption.
- * </p>
- *
- * <p>
- * This class can be used as follows:
- * <pre>
- *     AesTarEncryptor encryptor = new AesTarEncryptor("your_secure_password");
- *     encryptor.encryptAndCompressFolder("path_to_input_folder", "path_to_output_file");
- * </pre>
- * </p>
- *
- * @author slimouGit
- */
 public class AesTarDecryptor {
     private static final String ALGORITHM = "AES";
     private static final String TRANSFORMATION = "AES";
@@ -80,13 +59,13 @@ public class AesTarDecryptor {
         process.waitFor();
     }
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
+        String password = "your_secure_password";
+        AesTarDecryptor decryptor = new AesTarDecryptor(password);
         try {
-
             String inputFilePath = "C:\\Users\\175080724\\Documents\\Projekte\\JavaSandbox\\src\\DecryptEncrypt\\Output\\Test.tar.gz.aes";
             String outputFolderPath = "C:\\Users\\175080724\\Documents\\Projekte\\JavaSandbox\\src\\DecryptEncrypt\\Output\\Decrypted";
-            decryptAndDecompressFile(inputFilePath, outputFolderPath);
+            decryptor.decryptAndDecompressFile(inputFilePath, outputFolderPath);
 
             System.out.println("File decrypted and decompressed successfully!");
         } catch (Exception e) {
