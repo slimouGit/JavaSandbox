@@ -72,6 +72,8 @@ public class AesFolderEncryptor {
         }
     }
 
+
+
     private void encryptFile(File inputFile, File outputFile) throws Exception {
         try (FileInputStream inputStream = new FileInputStream(inputFile);
              FileOutputStream outputStream = new FileOutputStream(outputFile)) {
