@@ -46,7 +46,7 @@ public class AesTarDecryptor {
             CipherInputStream cipherInputStream = new CipherInputStream(inputStream, cipher);
             byte[] buffer = new byte[1024];
             int bytesRead;
-            while ((bytesRead = cipherInputStream.read(buffer)) >= 0) {
+            while ((bytesRead = cipherInputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);
             }
         }
