@@ -63,7 +63,31 @@ public class AesTarDecryptor {
         Files.deleteIfExists(Paths.get(tarFileName));
     }
 
+    private void extractTarGzFile(File inputFile, String outputFolderPath) throws IOException, InterruptedException {
+        ProcessBuilder pb = new ProcessBuilder("tar", "-xvzf", inputFile.getAbsolutePath(), "-C", outputFolderPath);
+        pb.redirectErrorStream(true);
+        Process process = pb.start();
+        process.waitFor();
+    }
+
+
     private void decryptFile(File inputFile, File outputFile) throws Exception {
+        try (FileInputStream inputStream = new FileInputStream(inputFile);
+             FileOutputStream outputStream = new FileOutputStream(outputFile)) {
+
+            Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+
+            CipherInputStream cipherInputStream = new CipherInputStream(inputStream, cipher);
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = cipherInputStream.read(buffer)) >= 0) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+        }
+    }
+
+    private void decryptFileR(File inputFile, File outputFile) throws Exception {
         try (FileInputStream inputStream = new FileInputStream(inputFile);
              FileOutputStream outputStream = new FileOutputStream(outputFile)) {
 
@@ -91,8 +115,8 @@ public class AesTarDecryptor {
             String password = "your_secure_password";
             AesTarDecryptor decryptor = new AesTarDecryptor(password);
 
-            String inputFilePath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test.tar.enc";
-            String outputFolderPath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test";
+            String inputFilePath = "C:\\Users\\175080724\\Documents\\Projekte\\JavaSandbox\\src\\DecryptEncrypt\\Output\\Test.tar.gz.aes";
+            String outputFolderPath = "C:\\Users\\175080724\\Documents\\Projekte\\JavaSandbox\\src\\DecryptEncrypt\\Output\\Decrypted";
 
             decryptor.decryptAndDecompressFile(inputFilePath, outputFolderPath);
             System.out.println("File decrypted and decompressed successfully!");
