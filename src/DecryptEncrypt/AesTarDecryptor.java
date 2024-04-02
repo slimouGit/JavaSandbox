@@ -14,32 +14,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-/**
- * A class for encrypting and compressing a folder using AES encryption and TAR compression.
- * This class uses the AES encryption algorithm to encrypt a folder and its contents.
- * The encryption is done using a password provided by the user.
- * The encrypted files are compressed into a TAR file and saved in the output file specified by the user.
- *
- * <p>
- * This class uses the Java Cryptography Extension (JCE) for the encryption.
- * The password is hashed using SHA-1 and the first 128 bits are used as the key for the AES encryption.
- * </p>
- *
- * <p>
- * This class can be used as follows:
- * <pre>
- *     AesTarEncryptor encryptor = new AesTarEncryptor("your_secure_password");
- *     encryptor.encryptAndCompressFolder("path_to_input_folder", "path_to_output_file");
- * </pre>
- * </p>
- *
- * @author slimouGit
- */
 public class AesTarDecryptor {
     private static final String ALGORITHM = "AES";
     private static final String TRANSFORMATION = "AES";
 
-    private SecretKey secretKey;
+    private static SecretKey secretKey;
 
     public AesTarDecryptor(String password) throws NoSuchAlgorithmException {
         byte[] key = password.getBytes();
@@ -49,21 +28,15 @@ public class AesTarDecryptor {
         secretKey = new SecretKeySpec(key, ALGORITHM);
     }
 
-    public void decryptAndDecompressFile(String inputFilePath, String outputFolderPath) throws Exception {
+    public static void decryptAndDecompressFile(String inputFilePath, String outputFolderPath) throws Exception {
         File inputFile = new File(inputFilePath);
-
-        // Entschlüsseln Sie die Datei zu einer TAR-Datei
-        String tarFileName = outputFolderPath + ".tar";
-        decryptFile(inputFile, new File(tarFileName));
-
-        // Entkomprimieren Sie die TAR-Datei in den Ordner
-        extractTarFile(new File(tarFileName), outputFolderPath);
-
-        // Löschen Sie die temporäre TAR-Datei
-        Files.deleteIfExists(Paths.get(tarFileName));
+        String tarGzFileName = outputFolderPath + ".tar.gz";
+        decryptFile(inputFile, new File(tarGzFileName));
+        extractTarGzFile(new File(tarGzFileName), outputFolderPath);
+        Files.deleteIfExists(Paths.get(tarGzFileName));
     }
 
-    private void decryptFile(File inputFile, File outputFile) throws Exception {
+    private static void decryptFile(File inputFile, File outputFile) throws Exception {
         try (FileInputStream inputStream = new FileInputStream(inputFile);
              FileOutputStream outputStream = new FileOutputStream(outputFile)) {
 
@@ -73,28 +46,27 @@ public class AesTarDecryptor {
             CipherInputStream cipherInputStream = new CipherInputStream(inputStream, cipher);
             byte[] buffer = new byte[1024];
             int bytesRead;
-            while ((bytesRead = cipherInputStream.read(buffer)) >= 0) {
+            while ((bytesRead = cipherInputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);
             }
         }
     }
 
-    private void extractTarFile(File inputFile, String outputFolderPath) throws IOException, InterruptedException {
-        ProcessBuilder pb = new ProcessBuilder("tar", "-xvf", inputFile.getAbsolutePath(), "-C", outputFolderPath);
+    private static void extractTarGzFile(File inputFile, String outputFolderPath) throws IOException, InterruptedException {
+        ProcessBuilder pb = new ProcessBuilder("tar", "-xvzf", inputFile.getAbsolutePath(), "-C", outputFolderPath);
         pb.redirectErrorStream(true);
         Process process = pb.start();
         process.waitFor();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
+        String password = "your_secure_password";
+        AesTarDecryptor decryptor = new AesTarDecryptor(password);
         try {
-            String password = "your_secure_password";
-            AesTarDecryptor decryptor = new AesTarDecryptor(password);
-
-            String inputFilePath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test.tar.enc";
-            String outputFolderPath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test";
-
+            String inputFilePath = "C:\\Users\\175080724\\Documents\\Projekte\\JavaSandbox\\src\\DecryptEncrypt\\Output\\Test.tar.gz.aes";
+            String outputFolderPath = "C:\\Users\\175080724\\Documents\\Projekte\\JavaSandbox\\src\\DecryptEncrypt\\Output\\Decrypted";
             decryptor.decryptAndDecompressFile(inputFilePath, outputFolderPath);
+
             System.out.println("File decrypted and decompressed successfully!");
         } catch (Exception e) {
             e.printStackTrace();

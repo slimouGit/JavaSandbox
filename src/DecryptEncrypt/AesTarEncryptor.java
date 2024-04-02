@@ -93,7 +93,7 @@ public class AesTarEncryptor {
             AesTarEncryptor encryptor = new AesTarEncryptor(password);
 
             String inputFolderPath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Input/Test";
-            String outputFilePath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test.tar.enc";
+            String outputFilePath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test.tar.gz.aes";
 
             encryptor.encryptAndCompressFolder(inputFolderPath, outputFilePath);
             System.out.println("Folder encrypted and compressed successfully!");
