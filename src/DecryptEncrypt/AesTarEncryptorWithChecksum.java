@@ -109,8 +109,8 @@ public class AesTarEncryptorWithChecksum {
             String password = "your_secure_password";
             AesTarEncryptorWithChecksum encryptor = new AesTarEncryptorWithChecksum(password);
 
-            String inputFolderPath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Input/Test2";
-            String outputFilePath = "C:/Users/175080724/Documents/Projekte/JavaSandbox/src/DecryptEncrypt/Output/Test2.tar.gz.aes";
+            String inputFolderPath = "E:/git_repo/JAVA/JavaKurs/src/DecryptEncrypt/Input/Test2";
+            String outputFilePath = "E:/git_repo/JAVA/JavaKurs/src/DecryptEncrypt/Output/Test2.tar.enc";
 
             encryptor.encryptAndCompressFolder(inputFolderPath, outputFilePath);
             System.out.println("Folder encrypted and compressed successfully!");
