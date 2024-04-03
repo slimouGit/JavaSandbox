@@ -11,6 +11,9 @@ import java.security.KeyStore;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
+import java.io.FileInputStream;
+import java.security.KeyStore;
+import java.security.UnrecoverableKeyException;
 
 public class Decryptor {
     private static final String ALGORITHM = "RSA";
@@ -50,6 +53,26 @@ public class Decryptor {
                 byte[] outputBuffer = cipher.doFinal(buffer, 0, bytesRead);
                 outputStream.write(outputBuffer);
             }
+        }
+    }
+
+
+    public boolean testPrivateKeyPassword(String p12FilePath, String password) {
+        try {
+            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+
+            try (FileInputStream fis = new FileInputStream(p12FilePath)) {
+                keyStore.load(fis, password.toCharArray());
+            }
+
+            String alias = keyStore.aliases().nextElement();
+            keyStore.getKey(alias, password.toCharArray());
+
+            return true;
+        } catch (UnrecoverableKeyException e) {
+            return false; // Das Passwort passt nicht zum privaten Schlüssel
+        } catch (Exception e) {
+            throw new RuntimeException("Fehler beim Testen des Passworts", e);
         }
     }
 
