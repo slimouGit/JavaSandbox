@@ -5,11 +5,7 @@ import javax.crypto.CipherInputStream;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
+import java.security.*;
 import java.security.cert.CertificateException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
@@ -37,9 +33,21 @@ public class TheDecryptorSymmetrisch {
         }
 
         String alias = keyStore.aliases().nextElement();
-        SecretKey secretKey = (SecretKey) keyStore.getKey(alias, password.toCharArray());
+        Key key = keyStore.getKey(alias, password.toCharArray());
 
-        return new SecretKeySpec(secretKey.getEncoded(), ALGORITHM);
+        if (key instanceof SecretKey) {
+            SecretKey secretKey = (SecretKey) key;
+            // Verwenden Sie secretKey...
+        } else if (key instanceof PrivateKey) {
+            PrivateKey privateKey = (PrivateKey) key;
+            // Verwenden Sie privateKey...
+        } else if (key instanceof PublicKey) {
+            PublicKey publicKey = (PublicKey) key;
+            // Verwenden Sie publicKey...
+        } else {
+            throw new IllegalArgumentException("Unbekannter Schlüsseltyp: " + key.getClass().getName());
+        }
+        return new SecretKeySpec(key.getEncoded(), ALGORITHM);
     }
 
     public void decryptFile(String inputFilePath, String outputFilePath) throws Exception {
