@@ -4,11 +4,14 @@ import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 
 public class TheDecryptorSymmetrisch {
@@ -16,21 +19,29 @@ public class TheDecryptorSymmetrisch {
     private static final String TRANSFORMATION = "AES";
     private SecretKey secretKey;
 
-    /**
-     * Constructor for the AesTarDecryptor class.
-     * It initializes the secret key using the provided password.
-     */
-    public TheDecryptorSymmetrisch(String password) throws NoSuchAlgorithmException {
-        byte[] key = password.getBytes();
-        MessageDigest sha = MessageDigest.getInstance("SHA-1");
-        key = sha.digest(key);
-        key = Arrays.copyOf(key, 16); // Use only first 128 bit
-        secretKey = new SecretKeySpec(key, ALGORITHM);
+    public TheDecryptorSymmetrisch(SecretKey secretKey) {
+        this.secretKey = secretKey;
     }
 
-    /**
-     * Decrypts the file at the given input file path and writes the decrypted content to the output file path.
-     */
+    public static SecretKey getSecretKeyFromP12File(String p12FilePath, String password) throws KeyStoreException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, InvalidKeySpecException {
+        KeyStore keyStore = KeyStore.getInstance("PKCS12");
+
+        try (FileInputStream fis = new FileInputStream(p12FilePath)) {
+            keyStore.load(fis, password.toCharArray());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (CertificateException e) {
+            throw new RuntimeException(e);
+        }
+
+        String alias = keyStore.aliases().nextElement();
+        SecretKey secretKey = (SecretKey) keyStore.getKey(alias, password.toCharArray());
+
+        return new SecretKeySpec(secretKey.getEncoded(), ALGORITHM);
+    }
+
     public void decryptFile(String inputFilePath, String outputFilePath) throws Exception {
         File inputFile = new File(inputFilePath);
         File outputFile = new File(outputFilePath);
@@ -50,14 +61,13 @@ public class TheDecryptorSymmetrisch {
         }
     }
 
-    /**
-     * The main method for the AesTarDecryptor class.
-     * It creates an instance of the AesTarDecryptor and uses it to decrypt a file.
-     */
     public static void main(String[] args) {
         try {
+            String p12FilePath = "path_to_your_p12_file";
             String password = "your_secure_password";
-            TheDecryptorSymmetrisch decryptor = new TheDecryptorSymmetrisch(password);
+            SecretKey secretKey = getSecretKeyFromP12File(p12FilePath, password);
+
+            TheDecryptorSymmetrisch decryptor = new TheDecryptorSymmetrisch(secretKey);
 
             String inputFilePath = "path_to_encrypted_file";
             String outputFilePath = "path_to_decrypted_file";
@@ -68,5 +78,4 @@ public class TheDecryptorSymmetrisch {
             e.printStackTrace();
         }
     }
-
 }
