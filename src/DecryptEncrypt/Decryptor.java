@@ -44,11 +44,11 @@ public class Decryptor {
         try (FileInputStream inputStream = new FileInputStream(inputFile);
              FileOutputStream outputStream = new FileOutputStream(outputFile)) {
 
-            CipherInputStream cipherInputStream = new CipherInputStream(inputStream, cipher);
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[384]; // Blockgröße auf 384 Bytes setzen
             int bytesRead;
-            while ((bytesRead = cipherInputStream.read(buffer)) >= 0) {
-                outputStream.write(buffer, 0, bytesRead);
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                byte[] outputBuffer = cipher.doFinal(buffer, 0, bytesRead);
+                outputStream.write(outputBuffer);
             }
         }
     }
