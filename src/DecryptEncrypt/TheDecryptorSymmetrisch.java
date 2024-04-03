@@ -8,7 +8,6 @@ import java.io.*;
 import java.security.*;
 import java.security.cert.CertificateException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
 
 public class TheDecryptorSymmetrisch {
     private static final String ALGORITHM = "AES";
@@ -20,15 +19,22 @@ public class TheDecryptorSymmetrisch {
     }
 
     public static SecretKey getSecretKeyFromP12File(String p12FilePath, String password) throws KeyStoreException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, InvalidKeySpecException {
-        KeyStore keyStore = KeyStore.getInstance("PKCS12");
+        KeyStore keyStore = null;
+        try {
+            keyStore = KeyStore.getInstance("PKCS12");
+        } catch (KeyStoreException e) {
+            throw new RuntimeException(e);
+        }
 
         try (FileInputStream fis = new FileInputStream(p12FilePath)) {
-            keyStore.load(fis, password.toCharArray());
+            try {
+                keyStore.load(fis, password.toCharArray());
+            } catch (CertificateException e) {
+                throw new RuntimeException(e);
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (CertificateException e) {
             throw new RuntimeException(e);
         }
 
@@ -37,7 +43,7 @@ public class TheDecryptorSymmetrisch {
 
         if (key instanceof SecretKey) {
             SecretKey secretKey = (SecretKey) key;
-            // Verwenden Sie secretKey...
+            return new SecretKeySpec(secretKey.getEncoded(), ALGORITHM);
         } else if (key instanceof PrivateKey) {
             PrivateKey privateKey = (PrivateKey) key;
             // Verwenden Sie privateKey...
@@ -47,7 +53,7 @@ public class TheDecryptorSymmetrisch {
         } else {
             throw new IllegalArgumentException("Unbekannter Schlüsseltyp: " + key.getClass().getName());
         }
-        return new SecretKeySpec(key.getEncoded(), ALGORITHM);
+        return null;
     }
 
     public void decryptFile(String inputFilePath, String outputFilePath) throws Exception {
