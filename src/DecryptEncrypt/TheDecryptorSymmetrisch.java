@@ -8,6 +8,7 @@ import java.io.*;
 import java.security.*;
 import java.security.cert.CertificateException;
 import java.security.spec.InvalidKeySpecException;
+import java.security.MessageDigest;
 
 public class TheDecryptorSymmetrisch {
     private static final String ALGORITHM = "AES";
@@ -18,42 +19,23 @@ public class TheDecryptorSymmetrisch {
         this.secretKey = secretKey;
     }
 
-    public static SecretKey getSecretKeyFromP12File(String p12FilePath, String password) throws KeyStoreException, NoSuchAlgorithmException, IOException, UnrecoverableKeyException, InvalidKeySpecException {
-        KeyStore keyStore = null;
-        try {
-            keyStore = KeyStore.getInstance("PKCS12");
-        } catch (KeyStoreException e) {
-            throw new RuntimeException(e);
-        }
+
+
+    public static SecretKey getSecretKeyFromP12File(String p12FilePath, String password) throws Exception {
+        KeyStore keyStore = KeyStore.getInstance("PKCS12");
 
         try (FileInputStream fis = new FileInputStream(p12FilePath)) {
-            try {
-                keyStore.load(fis, password.toCharArray());
-            } catch (CertificateException e) {
-                throw new RuntimeException(e);
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            keyStore.load(fis, password.toCharArray());
         }
 
         String alias = keyStore.aliases().nextElement();
         Key key = keyStore.getKey(alias, password.toCharArray());
 
-        if (key instanceof SecretKey) {
-            SecretKey secretKey = (SecretKey) key;
-            return new SecretKeySpec(secretKey.getEncoded(), ALGORITHM);
-        } else if (key instanceof PrivateKey) {
-            PrivateKey privateKey = (PrivateKey) key;
-            // Verwenden Sie privateKey...
-        } else if (key instanceof PublicKey) {
-            PublicKey publicKey = (PublicKey) key;
-            // Verwenden Sie publicKey...
-        } else {
-            throw new IllegalArgumentException("Unbekannter Schlüsseltyp: " + key.getClass().getName());
-        }
-        return null;
+        MessageDigest sha = MessageDigest.getInstance("SHA-256");
+        byte[] keyBytes = key.getEncoded();
+        byte[] hashedKey = sha.digest(keyBytes);
+
+        return new SecretKeySpec(hashedKey, 0, 16, ALGORITHM);
     }
 
     public void decryptFile(String inputFilePath, String outputFilePath) throws Exception {
