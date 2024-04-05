@@ -3,6 +3,7 @@ package DecryptEncrypt;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 
+import javax.crypto.Cipher;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,4 +50,18 @@ public class DeCompressByteArray {
         DeCompressByteArray deCompressByteArray = new DeCompressByteArray();
         deCompressByteArray.decompressAndListFiles(compressedTar);
     }
+
+    public byte[] decryptWithPrivateKey(byte[] encryptedData, PrivateKey privateKey) {
+        try {
+            Cipher cipher = Cipher.getInstance("RSA");
+            cipher.init(Cipher.DECRYPT_MODE, privateKey);
+
+            return cipher.doFinal(encryptedData);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }
