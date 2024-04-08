@@ -3,10 +3,7 @@ package DecryptEncrypt;
 import javax.crypto.*;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import java.security.InvalidKeyException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
+import java.security.*;
 
 public class SymmetricKey {
 
@@ -54,6 +51,19 @@ public class SymmetricKey {
         byte[] hash = sha256Digest.digest(keyBytes);
 
         return hash;
+    }
+
+    public byte[] encryptHashWithPrivateKey(byte[] hash, PrivateKey privateKey) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+        // Create a Cipher instance for RSA
+        Cipher cipher = Cipher.getInstance("RSA");
+
+        // Initialize the Cipher with the private key for encryption
+        cipher.init(Cipher.ENCRYPT_MODE, privateKey);
+
+        // Encrypt the hash
+        byte[] encryptedHash = cipher.doFinal(hash);
+
+        return encryptedHash;
     }
 }
 
