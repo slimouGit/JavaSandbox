@@ -1,4 +1,4 @@
-package AvoidIfElse.StrategyPattern;
+package Patterns.StrategyPattern;
 
 public class PaypalPayment implements PaymentStrategy {
     @Override

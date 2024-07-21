@@ -1,4 +1,4 @@
-package AvoidIfElse.StrategyPattern;
+package Patterns.StrategyPattern;
 
 import java.util.Arrays;
 
