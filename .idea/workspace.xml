@@ -2,43 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc43a7-598b-465e-be8a-4732909eaf1c" name="Default" comment="some further Patterns">
+      <change afterPath="$PROJECT_DIR$/src/Interface/Vehicles/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/Vehicles/Bike.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/Vehicles/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/Vehicles/MyVehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Abstract/AbstractClasses/Mercedes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Abstract/AbstractClasses/Mercedes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Clone/Clone_False/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Clone/Clone_False/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Clone/Clone_Method_flacheKopie/Clone_CopyConstructor/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Clone/Clone_Method_flacheKopie/Clone_CopyConstructor/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Clone/Clone_Method_flacheKopie/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Clone/Clone_Method_flacheKopie/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Clone/Clone_Method_tiefeKopie/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Clone/Clone_Method_tiefeKopie/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Interface/Interfaces/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Interface/Interfaces/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Interfaces_Fuhrpark/Audi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Interfaces_Fuhrpark/Audi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Interfaces_Fuhrpark/Tesla.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Interfaces_Fuhrpark/Tesla.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/AesFolderEncryptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/AesTarDecryptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/AesTarEncryptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/AesTarEncryptorWithChecksum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/DeCompressByteArray.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/DecryptTarFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/DecryptWithPrivateKey.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/Decryption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/DecryptionFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/Decryptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/DirectoryCompressor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/Encryption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/HerstellerFormatierung.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/InMemoryTarLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/KeyCheck.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/KeyEncryptionDecryptionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/RandomKeyEncryption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/ReadBlob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/SymmetricKey.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/TarCompressor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/TheDecryptorAsymmetrisch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/TheDecryptorSymmetrisch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecryptEncrypt/meta.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SingletonCDI/Singleton/ClassA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SingletonCDI/Singleton/ClassB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SingletonCDI/Singleton/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SingletonCDI/Singleton/Service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/XmlValidator/XmlValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Composition/Pet/Cat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Composition/Pet/Cat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Composition/Pet/Dog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Composition/Pet/Dog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Composition/Pet/Pet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Composition/Pet/Pet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Constructor/OverloadingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Constructor/OverloadingTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Optional/OptionalTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Optional/OptionalTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Animal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Cat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Cat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Dog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Dog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/KfW.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/KfW.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Labrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Labrador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Tiger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/Tiger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/UniCredit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung/UniCredit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung_Bank/DeutscheBank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung_Bank/DeutscheBank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung_Bank/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaKurs/Vererbung_Bank/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung/Animal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung/Cat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung/Dog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung/KfW.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung/Labrador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung/Tiger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung/UniCredit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung_Bank/Bank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung_Bank/CommerzBank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung_Bank/DeutscheBank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung_Bank/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inheritance/Vererbung_Bank/Person.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +266,7 @@
       <recent name="Equals_Hashmap" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Patterns.Singleton.Main">
+  <component name="RunManager" selected="Application.Interface.Vehicles.Application">
     <configuration default="true" type="Babashka" factoryName="BabashkaLocalRepl" activateToolWindowBeforeRun="false">
       <setting name="displayName" value="" />
       <setting name="bbPath" value="" />
@@ -307,12 +303,25 @@
       <setting name="focusEditor" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="DecryptEncrypt.AesTarEncryptorWithChecksum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DecryptEncrypt.AesTarEncryptorWithChecksum" />
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Interface.Logger.Application" />
       <module name="JavaKurs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DecryptEncrypt.*" />
+          <option name="PATTERN" value="Interface.Logger.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Interface.Vehicles.Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Interface.Vehicles.Application" />
+      <module name="JavaKurs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Interface.Vehicles.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -359,19 +368,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Singleton.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Singleton.Main" />
-      <module name="JavaKurs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Singleton.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -397,19 +393,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Application" />
+      <item itemvalue="Application.Interface.Vehicles.Application" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Patterns.Singleton.Main" />
-      <item itemvalue="Application.Singleton.Main" />
       <item itemvalue="Application.SingletonCDI.Singleton.Main" />
-      <item itemvalue="Application.DecryptEncrypt.AesTarEncryptorWithChecksum" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Interface.Vehicles.Application" />
+        <item itemvalue="Application.Application" />
         <item itemvalue="Application.Patterns.Singleton.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.SingletonCDI.Singleton.Main" />
-        <item itemvalue="Application.Singleton.Main" />
-        <item itemvalue="Application.DecryptEncrypt.AesTarEncryptorWithChecksum" />
       </list>
     </recent_temporary>
   </component>
